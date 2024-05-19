@@ -1,7 +1,7 @@
 version: '3'
 services:
   api:
-    image: zah1d/blog_img
+    image: zah1d/dailyblog_repo
     depends_on:
       - postgres
     ports:
