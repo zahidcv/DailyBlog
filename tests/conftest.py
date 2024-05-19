@@ -1,17 +1,18 @@
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
-
 from sqlalchemy.orm import sessionmaker
 
+from app.config import settings
 from app.database import Base, get_db
 from app.main import app
 from app.routers import auth
-from app.config import settings
 
-# SQLALCHEMY_DATABASE_URL = f"postgresql://postgres:postgrepass@localhost:5432/fastapidb_test"
-SQLALCHEMY_DATABASE_URL = f"postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}/{settings.database_name}_test"
-# SQLALCHEMY_DATABASE_URL = f"postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}/{settings.database_name}_test"
+SQLALCHEMY_DATABASE_URL = f"postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}/{settings.database_name}"
+
+print('******** from conftest ***********', settings.database_hostname)
+
+
 
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)

@@ -20,5 +20,5 @@ jobs:
 
       # Run tests
       - name: Run Pytest
-        run: pytest
+        run: docker exec -it dailyblog-dailyblog_api-1 pytest
 
