@@ -1,0 +1,24 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    environment: dailyblog_testing
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # Set up Docker engine
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      # Build Docker images
+      - name: Build Docker images
+        run: docker compose -f docker-compose-dev.yml up --build -d
+
+      # Run tests
+      - name: Run Pytest
+        run: pytest
+
