@@ -1,5 +1,5 @@
 from pydantic_settings import BaseSettings
-
+from pydantic import Field
 
 class Settings(BaseSettings):
     database_hostname: str
@@ -13,6 +13,8 @@ class Settings(BaseSettings):
 
     class config():
         env_file = ".env"
+    
+    access_token_expiration_minutes = Field(..., type=int, ge=1)
     
 settings = Settings()
 
