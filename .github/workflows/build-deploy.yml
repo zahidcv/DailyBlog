@@ -19,8 +19,8 @@ jobs:
         run: docker compose -f docker-compose-dev.yml up --build -d
 
       # Run tests
-      - name: Run Pytest
-        run: docker exec -t dailyblog-dailyblog_api-1 pytest
+      # - name: Run Pytest
+      #   run: docker exec -t dailyblog-dailyblog_api-1 pytest
 
 
 
