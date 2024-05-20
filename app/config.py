@@ -1,5 +1,5 @@
 from pydantic_settings import BaseSettings
-from pydantic import Field
+from pydantic import Field, validator, ValidationError
 
 class Settings(BaseSettings):
     database_hostname: str
@@ -14,7 +14,14 @@ class Settings(BaseSettings):
     class config():
         env_file = ".env"
     
-    access_token_expiration_minutes = Field(..., type=int, ge=1)
+    @validator('access_token_expiration_minutes', pre=True)
+    def validate_access_token_expiration_minutes(cls, value):
+        if isinstance(value, str):
+            try:
+                return int(value)
+            except ValueError:
+                raise ValidationError("access_token_expiration_minutes must be an integer")
+        return value
     
 settings = Settings()
 
