@@ -19,7 +19,6 @@ env3.*
 docs_build
 site_build
 venv/
-postgres-data
 docs.zip
 archive.zip
 scratch.py
