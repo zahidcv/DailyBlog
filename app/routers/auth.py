@@ -13,7 +13,7 @@ from ..config import settings
 
 SECRET_KEY = settings.secret_key
 ALGORITHM = settings.algorithm
-ACCESS_TOKEN_EXPIRATION_MINUTES = settings.access_token_expiration_minutes
+ACCESS_TOKEN_EXPIRATION_MINUTES = 50
 
 
 router = APIRouter(
