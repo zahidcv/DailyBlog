@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     database_username: str 
     secret_key: str 
     algorithm :str
-    # access_token_expiration_minutes: int
+
 
     class config():
         env_file = ".env"
